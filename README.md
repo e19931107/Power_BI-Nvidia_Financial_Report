@@ -27,7 +27,7 @@ in
 
 
 let
-    Source = Csv.Document(File.Contents("D:\GitHub\Power_BI-Nvidia_Financial_Report\CSV\Liabilities and Equity - Pure.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+    Source = Csv.Document(File.Contents("D:\GitHub\Power_BI-Nvidia_Financial_Report\CSV\ <span style="color: red">Liabilities and Equity - Pure.csv </span> "),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
     #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}, {"Column7", type text}}),
     #"Removed Top Rows" = Table.Skip(#"Changed Type",4),
     #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true]),
