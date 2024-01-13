@@ -37,3 +37,7 @@ let
     #"Inserted Year" = Table.AddColumn(#"Changed Type2", "Year", each Date.Year([Attribute]), Int64.Type)
 in
     #"Inserted Year"
+
+
+A very <span style='color: red;'>long</span> sentence.
+
