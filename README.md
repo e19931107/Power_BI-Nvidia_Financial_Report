@@ -52,4 +52,11 @@ let
 in
     #"Inserted Year"
 
+### Step 5: Build key and index order for Assets sheets, Liabilities and Equity sheets
+
+![image](https://github.com/e19931107/Power_BI-Nvidia_Financial_Report/assets/50692450/710260c6-6392-44fc-8d07-86b4eee7c051)
+
+![image](https://github.com/e19931107/Power_BI-Nvidia_Financial_Report/assets/50692450/fdb21126-2e4f-4748-b239-17ce46eda226)
+
+
 
