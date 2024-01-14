@@ -58,5 +58,9 @@ in
 
 ![image](https://github.com/e19931107/Power_BI-Nvidia_Financial_Report/assets/50692450/fdb21126-2e4f-4748-b239-17ce46eda226)
 
+## DAX
+
+Title = SELECTEDVALUE('Year'[Year])&" Nvidia Assests, Liabilities and Equity sheets"
+
 
 
