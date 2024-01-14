@@ -1,8 +1,17 @@
 # Power_BI-Nvidia_Financial_Report
 
 ## Result:
-![image](https://github.com/e19931107/Power_BI-Nvidia_Financial_Report/assets/50692450/92e3c496-bdac-43e8-bcce-5947ab4a5207)
+### First Page
+![image](https://github.com/e19931107/Power_BI-Nvidia_Financial_Report/assets/50692450/4d409aa4-966d-4424-a0f4-e7f2931e4fa0)
 
+### Second Page
+![image](https://github.com/e19931107/Power_BI-Nvidia_Financial_Report/assets/50692450/da39eabe-4497-4e04-aaa6-f509dc7c4a41)
+
+## Explain
+First page: Click the current ratio button, quick ratio button, or cash flow ratio button, below bar chart will also change.
+
+Second page: Bar chart only connected with Year button. so the current ratio, quick ratio and cash flow ratio didn't connect with the bar chart.
+This means the bar chart shows the status of assets, liabilities and equity with selected year.
 
 ## Step
 ### Step 1: Clear data, remove subtotal and total raw
@@ -43,4 +52,51 @@ let
 in
     #"Inserted Year"
 
+### Step 5: Build key and index order for Assets sheets, Liabilities and Equity sheets
 
+![image](https://github.com/e19931107/Power_BI-Nvidia_Financial_Report/assets/50692450/710260c6-6392-44fc-8d07-86b4eee7c051)
+
+![image](https://github.com/e19931107/Power_BI-Nvidia_Financial_Report/assets/50692450/fdb21126-2e4f-4748-b239-17ce46eda226)
+
+## DAX
+
+Title = SELECTEDVALUE('Year'[Year])&" Nvidia Assests, Liabilities and Equity sheets"
+
+Ratio = DIVIDE('Assets - Pure'[Assets],'Liabilities and Equity - Pure'[Liabilities and Equity])
+Quick Ratio = DIVIDE(CALCULATE('Year'[Assets - Cash and cash equivalents]+
+                                'Year'[Assets - Marketable securities]+
+                                'Year'[Assets - Accounts receivable, net]),
+                        CALCULATE('Year'[Equity - Accounts payable]+
+                                'Year'[Equity - Customer program accruals]+
+                                'Year'[Equity - Excess inventory purchase obligations]+
+                                'Year'[Equity - Accrued payroll and related expenses]+
+                                'Year'[Equity - Taxes payable]+
+                                'Year'[Equity - Deferred revenue]+
+                                'Year'[Equity - Short-term operating lease liabilities]+
+                                'Year'[Equity - Miscellaneous Payables]))
+
+Cash Flow Ratio = DIVIDE(CALCULATE('Year'[Assets - Cash and cash equivalents]),
+                        CALCULATE('Year'[Equity - Accounts payable]+
+                                'Year'[Equity - Customer program accruals]+
+                                'Year'[Equity - Excess inventory purchase obligations]+
+                                'Year'[Equity - Accrued payroll and related expenses]+
+                                'Year'[Equity - Taxes payable]+
+                                'Year'[Equity - Deferred revenue]+
+                                'Year'[Equity - Short-term operating lease liabilities]+
+                                'Year'[Equity - Miscellaneous Payables]))
+
+Current Ratio = DIVIDE(CALCULATE('Year'[Assets - Cash and cash equivalents]+
+                                'Year'[Assets - Marketable securities]+
+                                'Year'[Assets - Accounts receivable, net]+
+                                'Year'[Assets - Inventories]),
+                        CALCULATE('Year'[Equity - Accounts payable]+
+                                'Year'[Equity - Customer program accruals]+
+                                'Year'[Equity - Excess inventory purchase obligations]+
+                                'Year'[Equity - Accrued payroll and related expenses]+
+                                'Year'[Equity - Taxes payable]+
+                                'Year'[Equity - Deferred revenue]+
+                                'Year'[Equity - Short-term operating lease liabilities]+
+                                'Year'[Equity - Miscellaneous Payables]))
+
+Assets - Accounts receivable, net = CALCULATE(SUM('Assets - Pure'[Value]), 'Assets - Pure'[Sub-Type]="Accounts receivable, net")
+Equity - Accounts payable = CALCULATE(SUM('Liabilities and Equity - Pure'[Value]), 'Liabilities and Equity - Pure'[Sub-Type] = "Accounts payable")
