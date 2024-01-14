@@ -62,5 +62,38 @@ in
 
 Title = SELECTEDVALUE('Year'[Year])&" Nvidia Assests, Liabilities and Equity sheets"
 
+Ratio = DIVIDE('Assets - Pure'[Assets],'Liabilities and Equity - Pure'[Liabilities and Equity])
+Quick Ratio = DIVIDE(CALCULATE('Year'[Assets - Cash and cash equivalents]+
+                                'Year'[Assets - Marketable securities]+
+                                'Year'[Assets - Accounts receivable, net]),
+                        CALCULATE('Year'[Equity - Accounts payable]+
+                                'Year'[Equity - Customer program accruals]+
+                                'Year'[Equity - Excess inventory purchase obligations]+
+                                'Year'[Equity - Accrued payroll and related expenses]+
+                                'Year'[Equity - Taxes payable]+
+                                'Year'[Equity - Deferred revenue]+
+                                'Year'[Equity - Short-term operating lease liabilities]+
+                                'Year'[Equity - Miscellaneous Payables]))
 
+Cash Flow Ratio = DIVIDE(CALCULATE('Year'[Assets - Cash and cash equivalents]),
+                        CALCULATE('Year'[Equity - Accounts payable]+
+                                'Year'[Equity - Customer program accruals]+
+                                'Year'[Equity - Excess inventory purchase obligations]+
+                                'Year'[Equity - Accrued payroll and related expenses]+
+                                'Year'[Equity - Taxes payable]+
+                                'Year'[Equity - Deferred revenue]+
+                                'Year'[Equity - Short-term operating lease liabilities]+
+                                'Year'[Equity - Miscellaneous Payables]))
 
+Current Ratio = DIVIDE(CALCULATE('Year'[Assets - Cash and cash equivalents]+
+                                'Year'[Assets - Marketable securities]+
+                                'Year'[Assets - Accounts receivable, net]+
+                                'Year'[Assets - Inventories]),
+                        CALCULATE('Year'[Equity - Accounts payable]+
+                                'Year'[Equity - Customer program accruals]+
+                                'Year'[Equity - Excess inventory purchase obligations]+
+                                'Year'[Equity - Accrued payroll and related expenses]+
+                                'Year'[Equity - Taxes payable]+
+                                'Year'[Equity - Deferred revenue]+
+                                'Year'[Equity - Short-term operating lease liabilities]+
+                                'Year'[Equity - Miscellaneous Payables]))
