@@ -97,3 +97,6 @@ Current Ratio = DIVIDE(CALCULATE('Year'[Assets - Cash and cash equivalents]+
                                 'Year'[Equity - Deferred revenue]+
                                 'Year'[Equity - Short-term operating lease liabilities]+
                                 'Year'[Equity - Miscellaneous Payables]))
+
+Assets - Accounts receivable, net = CALCULATE(SUM('Assets - Pure'[Value]), 'Assets - Pure'[Sub-Type]="Accounts receivable, net")
+Equity - Accounts payable = CALCULATE(SUM('Liabilities and Equity - Pure'[Value]), 'Liabilities and Equity - Pure'[Sub-Type] = "Accounts payable")
